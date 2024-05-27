@@ -8,6 +8,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const from = document.querySelector(".form");
 const gallery = document.querySelector(".gallery");
+const loader = document.querySelector("#loading");
 
 
 from.addEventListener('submit', event => {
@@ -29,6 +30,7 @@ from.addEventListener('submit', event => {
         const markup = downLoadImg(data.hits);
         gallery.innerHTML = markup;
         showLoading();
+        imgGallery();
       }
     })
     .catch(error => console.log(error))
@@ -38,6 +40,7 @@ from.addEventListener('submit', event => {
     });
 });
 
+ 
 function showLoading() {
     loading.style.display = "block";
 };
@@ -45,3 +48,7 @@ function showLoading() {
 function hideLoading() {
     loading.style.display = "none";
 };
+
+window.addEventListener('load', () => {
+  hideLoading();
+});

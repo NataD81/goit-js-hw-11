@@ -3,6 +3,9 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 
 const gallery = document.querySelector(".gallery");
 
+
+let lightbox;
+
 export function createImg (image) {
     return `<li class="card">
     <a href="${image.largeImageURL}">
@@ -24,9 +27,16 @@ export function downLoadImg (arr) {
 }
 
 export function imgGallery () {
-    let lightbox = new SimpleLightbox('.gallery img', {
+    if(!lightbox){
+    lightbox = new SimpleLightbox('.gallery a', {
         captionsData: 'alt',
         captionDelay: 250           
 });
-lightbox.refresh();
-};
+    }else{
+        lightbox.refresh();
+    }
+
+}
+
+
+

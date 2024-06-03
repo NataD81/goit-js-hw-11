@@ -33,7 +33,12 @@ from.addEventListener('submit', event => {
         imgGallery();
       }
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+      iziToast.error({
+        message: `An error occurred: ${error.message}. Please try again later.`,
+        position: 'topRight',
+      });
+    })
     .finally(() => {
       event.target.reset();
       hideLoading();
@@ -42,13 +47,13 @@ from.addEventListener('submit', event => {
 
  
 function showLoading() {
-    loading.style.display = "block";
+    loader.style.display = "block";
 };
 
 function hideLoading() {
-    loading.style.display = "none";
+    loader.style.display = "none";
 };
 
-window.addEventListener('load', () => {
-  hideLoading();
-});
+// window.addEventListener('load', () => {
+//   hideLoading();
+// });
